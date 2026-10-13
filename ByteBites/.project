@@ -20,5 +20,10 @@
 			<type>1</type>
 			<locationURI>PARENT-1-PROJECT_LOC/Foothill.java</locationURI>
 		</link>
+		<link>
+			<name>src/test_bytebites.java</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/test_bytebites.java</locationURI>
+		</link>
 	</linkedResources>
 </projectDescription>

@@ -1,20 +1,3 @@
-/*
- * ByteBites backend: summary of the four classes (see bytebites_design.mmd)
- *
- * Customer - one app user. Holds a name and an array of past Orders (purchase
- *            history). verifyUser() is true if there is at least one order.
- * Menu     - the full collection of MenuItems, stored in an array. Adds items
- *            and filters them by category such as "Drinks" or "Desserts", or
- *            ranks them by popularity.
- * MenuItem - one food item with a name, price, category and popularity
- *            rating. Every field is validated by its mutator.
- * Order    - one transaction. Holds the MenuItems a user picked, in an array,
- *            and computes the total cost.
- *
- * Relationships: a Customer places many Orders and browses a Menu; a Menu
- * contains MenuItems; an Order includes MenuItems.
- */
-
 import java.text.*;
 import java.util.*;
 
@@ -311,17 +294,6 @@ class Menu
         return sortedItems;
     }
 
-    /**
-     * Makes one pass over the first part of an array, swapping neighbors that
-     * are out of order so the lowest rating in that part moves to its end.
-     *
-     * @param data
-     *            the items to reorder, none of which may be null
-     * @param end
-     *            the last position that the pass compares, which must be less
-     *            than the length of the array
-     * @return true if any items were swapped, false if the part was in order
-     */
     private static boolean floatLowestRatingToEnd(MenuItem[] data, int end)
     {
         boolean changed;
@@ -698,8 +670,6 @@ public class Foothill
                 "setPrice(9.25) (expect true): " + burger.setPrice(9.25));
         System.out
                 .println("menu.getItem(99) (expect null): " + menu.getItem(99));
-        // The valid setPrice(9.25) test changed the burger's price, so restore
-        // the original 8.50 before the order totals below.
         burger.setPrice(8.50);
 
         System.out.println();
@@ -746,16 +716,6 @@ public class Foothill
                 customer.browseMenu(null, "Drinks"), money);
     }
 
-    /**
-     * Displays a title followed by each item in an array.
-     *
-     * @param title
-     *            the heading to show
-     * @param list
-     *            the items to show, which may have no items
-     * @param money
-     *            the formatter used to show prices
-     */
     private static void showItems(String title, MenuItem[] list,
             NumberFormat money)
     {
@@ -769,10 +729,6 @@ public class Foothill
                     + list[itemIndex].getPopularityRating());
     }
 
-    /**
-     * Inspects sample objects before building, sorting, and filtering a menu,
-     * then computes and places an order.
-     */
     private static void runSmallScenario()
     {
         int itemIndex;
@@ -787,7 +743,6 @@ public class Foothill
         Order order = new Order();
         Customer customer = new Customer("Karina Souza");
 
-        // First inspect the objects before adding anything.
         showItems("Sample menu items", sampleItems, money);
         System.out.println("Customer: " + customer.getName());
         System.out.println("Menu items before adding: " + menu.getItemCount());
