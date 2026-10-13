@@ -1,0 +1,24 @@
+# macOS Finder metadata
+.DS_Store
+._*
+
+# Eclipse workspace state and generated Java files
+.metadata/
+bin/
+*.class
+*.log
+
+# Local credentials and environment configuration
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+credentials.json
+secrets.json
+secrets.properties
