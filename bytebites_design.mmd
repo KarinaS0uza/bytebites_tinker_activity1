@@ -1,0 +1,54 @@
+classDiagram
+    class Customer {
+        -String name
+        -Order[] purchaseHistory
+        -int orderCount
+        +int MAX_ORDERS$
+        +Customer(name: String)
+        +getName() String
+        +setName(name: String) boolean
+        +getOrderCount() int
+        +getOrder(index: int) Order
+        +addOrder(order: Order) boolean
+        +verifyUser() boolean
+    }
+    class Menu {
+        -MenuItem[] items
+        -int itemCount
+        +int MAX_ITEMS$
+        +Menu()
+        +getItemCount() int
+        +getItem(index: int) MenuItem
+        +addItem(item: MenuItem) boolean
+        +filterByCategory(category: String) MenuItem[]
+    }
+    class MenuItem {
+        -String name
+        -double price
+        -String category
+        -double popularityRating
+        +MenuItem(name: String, price: double, category: String, popularityRating: double)
+        +getName() String
+        +getPrice() double
+        +getCategory() String
+        +getPopularityRating() double
+        +setName(name: String) boolean
+        +setPrice(price: double) boolean
+        +setCategory(category: String) boolean
+        +setPopularityRating(rating: double) boolean
+    }
+    class Order {
+        -MenuItem[] items
+        -int itemCount
+        +int MAX_ITEMS$
+        +Order()
+        +getItemCount() int
+        +getItem(index: int) MenuItem
+        +addItem(item: MenuItem) boolean
+        +calculateTotal() double
+    }
+
+    Customer "1" --> "0..*" Order : places
+    Customer ..> Menu : browses
+    Menu "1" *-- "0..*" MenuItem : contains
+    Order "*" o-- "1..*" MenuItem : includes
