@@ -3,13 +3,17 @@ classDiagram
         -String name
         -Order[] purchaseHistory
         -int orderCount
+        +int MIN_NAME_LENGTH$
+        +int MAX_NAME_LENGTH$
+        +String DEFAULT_NAME$
         +int MAX_ORDERS$
         +Customer(name: String)
         +getName() String
         +setName(name: String) boolean
         +getOrderCount() int
         +getOrder(index: int) Order
-        +addOrder(order: Order) boolean
+        +placeOrder(order: Order) boolean
+        +browseMenu(menu: Menu, category: String) MenuItem[]
         +verifyUser() boolean
     }
     class Menu {
@@ -21,12 +25,25 @@ classDiagram
         +getItem(index: int) MenuItem
         +addItem(item: MenuItem) boolean
         +filterByCategory(category: String) MenuItem[]
+        +sortByPopularity() MenuItem[]
     }
     class MenuItem {
         -String name
         -double price
         -String category
         -double popularityRating
+        +int MIN_NAME_LENGTH$
+        +int MAX_NAME_LENGTH$
+        +int MIN_CATEGORY_LENGTH$
+        +int MAX_CATEGORY_LENGTH$
+        +double MIN_PRICE$
+        +double MAX_PRICE$
+        +double MIN_POPULARITY_RATING$
+        +double MAX_POPULARITY_RATING$
+        +String DEFAULT_NAME$
+        +double DEFAULT_PRICE$
+        +String DEFAULT_CATEGORY$
+        +double DEFAULT_POPULARITY_RATING$
         +MenuItem(name: String, price: double, category: String, popularityRating: double)
         +getName() String
         +getPrice() double
@@ -35,7 +52,7 @@ classDiagram
         +setName(name: String) boolean
         +setPrice(price: double) boolean
         +setCategory(category: String) boolean
-        +setPopularityRating(rating: double) boolean
+        +setPopularityRating(popularityRating: double) boolean
     }
     class Order {
         -MenuItem[] items
